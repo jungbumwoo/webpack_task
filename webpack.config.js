@@ -1,25 +1,17 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: {
-        jaehee : './src/js/index.js'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
-                exclude: /node_modules/
-            }
-        ]
-    },
+    entry: './src/js/main.js',
     output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.app.js'
     },
-    mode: 'development',
-    plugins: [
-        new MiniCssExtractPlugin({ filename: 'css/style.css'})
-    ]
+    plugin: [
+        new HtmlWebpackPlugin({
+            template: 'index.hrml',
+            filename: 'index.html'
+        })
+    ],
+    mode: 'development'
 };

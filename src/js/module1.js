@@ -1,1 +1,1 @@
-console.log('module1 실행');
+console.log('module1');
